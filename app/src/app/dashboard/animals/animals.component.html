@@ -1,8 +1,20 @@
+<button md-button color="warn" class="fl-right add-row-btn" (click)="addRow()">New</button>
+<div class="clearfix"></div>
 <div class="example-container mat-elevation-z8">
+
   <md-table #table [dataSource]="dataSource">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
+    <ng-container mdColumnDef="remove">
+      <md-header-cell *mdHeaderCellDef> </md-header-cell>
+      <md-cell class="icon-cell" *mdCellDef="let element"> <i class="material-icons pointer">delete</i> </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="edit">
+      <md-header-cell *mdHeaderCellDef> </md-header-cell>
+      <md-cell class="icon-cell" *mdCellDef="let element"> <i class="material-icons pointer">edit</i> </md-cell>
+    </ng-container>
 
     <!-- Position Column -->
     <ng-container mdColumnDef="position">
@@ -10,25 +22,25 @@
       <md-cell *mdCellDef="let element"> {{element.position}} </md-cell>
     </ng-container>
 
-    <!-- Name Column -->
     <ng-container mdColumnDef="name">
       <md-header-cell *mdHeaderCellDef> Name </md-header-cell>
       <md-cell *mdCellDef="let element"> {{element.name}} </md-cell>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container mdColumnDef="weight">
-      <md-header-cell *mdHeaderCellDef> Weight </md-header-cell>
-      <md-cell *mdCellDef="let element"> {{element.weight}} </md-cell>
+
+    <ng-container mdColumnDef="age">
+      <md-header-cell *mdHeaderCellDef> Age </md-header-cell>
+      <md-cell *mdCellDef="let element"> {{element.age}} </md-cell>
     </ng-container>
 
-    <!-- Color Column -->
-    <ng-container mdColumnDef="symbol">
-      <md-header-cell *mdHeaderCellDef> Symbol </md-header-cell>
-      <md-cell *mdCellDef="let element"> {{element.symbol}} </md-cell>
+
+    <ng-container mdColumnDef="image">
+      <md-header-cell *mdHeaderCellDef>Image </md-header-cell>
+      <md-cell *mdCellDef="let element"> {{element.image}} </md-cell>
     </ng-container>
 
     <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
     <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
   </md-table>
 </div>
+

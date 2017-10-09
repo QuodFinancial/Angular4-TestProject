@@ -19,3 +19,7 @@ html, body {
 .clearfix {
     clear: both;
 }
+
+.pointer {
+    cursor: pointer;
+}

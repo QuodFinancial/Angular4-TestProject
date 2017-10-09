@@ -3,34 +3,40 @@ import {DataSource} from '@angular/cdk/collections';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
+export interface Element {
+	position: number;
+	name: string;
+	age: number;
+	image: string;
+}
 
+let data: Element[] = [
+	{ position: 1, name: 'Hydrogen', age: 1, image: '' },
+	{ position: 2, name: 'Helium', age: 4, image: ''}
+];
 @Component({
   selector: 'app-animals',
   templateUrl: './animals.component.html',
-  styleUrls: ['./animals.component.css']
+  styleUrls: ['./../dashboard.component.css']
 })
 export class AnimalsComponent {
-
-	displayedColumns = ['position', 'name', 'weight', 'symbol'];
+	data;
+	name = "";
+	age = "";
+	image = "";
+	displayedColumns = ['remove', 'edit', 'position', 'name', 'age', 'image'];
 	dataSource = new ExampleDataSource();
+
+	addRow() {
+		this.data.push({name: this.name, age: this.age, image: this.image});
+		this.name = '';
+		this.age = '';
+		this.image = '';
+		console.log(this.data);
+	}
 }
 
-export interface Element {
-	name: string;
-	position: number;
-	weight: number;
-	symbol: string;
-}
 
-const data: Element[] = [
-	{position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-	{position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-	{position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-	{position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-	{position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-	{position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-	{position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'}
-];
 
 /**
  * Data source to provide what data should be rendered in the table. The observable provided

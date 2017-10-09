@@ -56,3 +56,12 @@
     padding: 10px 20px;
     border-bottom: 1px solid rgba(255,255,255, 0.7);
 }
+
+.add-row-btn {
+    color: #fda523;
+    background: #f3eadc;
+}
+
+.icon-cell {
+    flex: 0.3;
+}
