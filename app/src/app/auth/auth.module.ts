@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { AuthRouterModule, authRouterDeclarations } from './auth-router.module';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 
 
 
@@ -20,7 +20,8 @@ import { MatFormFieldModule, MatInputModule } from '@angular/material';
     ReactiveFormsModule,
 
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+      MatButtonModule
   ],
     exports: [
     CommonModule
