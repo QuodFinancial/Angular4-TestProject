@@ -21,7 +21,7 @@ import { MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/ma
 
     MatFormFieldModule,
     MatInputModule,
-      MatButtonModule
+    MatButtonModule
   ],
     exports: [
     CommonModule

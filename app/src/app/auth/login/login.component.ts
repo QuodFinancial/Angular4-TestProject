@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,13 +7,8 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent  {
 
-    user = {userId: '', password: ''};
+  user = {userId: '', password: ''};
 
-  constructor(
-     /* public name: string,
-      public alterEgo: string*/
-  ) {
-
-  }
+  constructor( ) { }
 
 }

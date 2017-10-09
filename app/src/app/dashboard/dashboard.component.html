@@ -1,13 +1,28 @@
-<div>
-  <header>
-    My best test project
-  </header>
+<div class="dashboard">
   <div class="content">
+    <div class="heading">
+      <span>TradingLimit</span>
+      <a class="white-link fl-right" routerLink="/login">
+        <span>Logout</span>
+        <img src="assets/images/switch.svg" width="20" alt="">
+      </a>
+    </div>
     <div class="sidebar">
-      <a routerLink="/dashboard/users">Users</a>
-      <a routerLink="/dashboard/animals">Animals</a>
-      <a routerLink="/dashboard/cars">Cars</a>
-      <a routerLink="/login">Login</a>
+      <div class="sidebar-logo">
+        <img src="assets/images/logo.png" alt="" width="240">
+      </div>
+      <ul class="sidebar-list">
+        <li>
+          <a class="white-link" routerLink="/dashboard/users">Users</a>
+        </li>
+        <li>
+          <a class="white-link" routerLink="/dashboard/animals">Animals</a>
+        </li>
+        <li>
+          <a class="white-link" routerLink="/dashboard/cars">Cars</a>
+        </li>
+      </ul>
+
     </div>
     <div class="main">
       <router-outlet></router-outlet>
