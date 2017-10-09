@@ -1,12 +1,28 @@
 <div class="logo">
   <img src="assets/logo.png" alt="" width="260">
 </div>
-<form class="authForm">
+<form class="authForm" #userForm="ngForm">
+
   <md-form-field class="login-input">
-    <input mdInput placeholder="Username*">
+  <input mdInput id="name" name="name" class="form-control"
+         required minlength="4" placeholder="Username"
+         [(ngModel)]="user.userId" #name="ngModel" >
   </md-form-field>
+
+  <div *ngIf="name.invalid && (name.dirty || name.touched)"
+       class="alert alert-danger">
+    <div *ngIf="name.errors.minlength">
+      Name must be at least 4 characters long.
+    </div>
+  </div>
+
   <md-form-field class="login-input">
-    <input mdInput placeholder="Password*">
+    <input mdInput id="password" type="password" class="form-control" required
+           name="password" [(ngModel)]="user.password" placeholder="Password">
   </md-form-field>
-  <button md-button routerLink="/dashboard" class="login-btn">LOGIN</button>
+
+  <button md-button routerLink="/dashboard" type="submit" class="login-btn"
+          [disabled]="userForm.invalid">LOGIN</button>
+
 </form>
+
