@@ -1,3 +1,58 @@
-<p>
-  cars works!
-</p>
+<button md-button color="warn" class="fl-right add-row-btn" (click)="addRowAction()">New</button>
+<div class="clearfix"></div>
+
+<div class="example-container mat-elevation-z8">
+
+  <md-table #table [dataSource]="dataSource">
+
+    <ng-container mdColumnDef="remove">
+      <md-header-cell *mdHeaderCellDef></md-header-cell>
+      <md-cell class="icon-cell" *mdCellDef="let i = index" (click)="removeRowAction(i)"><i class="material-icons pointer">delete</i></md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="edit">
+      <md-header-cell *mdHeaderCellDef></md-header-cell>
+      <md-cell class="icon-cell" *mdCellDef="let i = index;">
+        <i *ngIf="i !== editedRow" (click)="editRowAction(i)" class="material-icons pointer">edit</i>
+        <i *ngIf="i === editedRow" (click)="saveRowAction(i)" class="material-icons pointer">save</i>
+        <i *ngIf="i === editedRow" (click)="cancelRowAction(i)" class="material-icons pointer">cancel</i>
+      </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="model">
+      <md-header-cell *mdHeaderCellDef>Model</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseBlock" [(ngModel)]="element.model">
+        <ng-template #elseBlock>{{element.model}}</ng-template>
+      </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="power">
+      <md-header-cell *mdHeaderCellDef>Power</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elsePower" [(ngModel)]="element.power">
+        <ng-template #elsePower>{{element.power}}</ng-template>
+      </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="doors">
+      <md-header-cell *mdHeaderCellDef>Doors</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseDoors" [(ngModel)]="element.doors">
+        <ng-template #elseDoors>{{element.doors}}</ng-template>
+      </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="prodYear">
+      <md-header-cell *mdHeaderCellDef>Prod Year</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseProdYear" [(ngModel)]="element.prodYear">
+        <ng-template #elseProdYear>{{element.prodYear}}</ng-template>
+      </md-cell>
+    </ng-container>
+
+
+    <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+</div>
