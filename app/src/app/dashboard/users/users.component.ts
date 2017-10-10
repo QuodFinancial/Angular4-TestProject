@@ -12,7 +12,7 @@ import { UsersInteractor } from '../../../../../lib/src/users/users.iteractor';
 @Component({
 	selector: 'app-users',
 	templateUrl: './users.component.html',
-	styleUrls: ['./../dashboard.component.css']
+	styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
 	private _interactor: UsersInteractor;

@@ -21,7 +21,7 @@
            name="password" [(ngModel)]="user.password" placeholder="Password">
   </md-form-field>
 
-  <button md-button routerLink="/dashboard" type="submit" class="login-btn"
+  <button md-button md-raised-button routerLink="/dashboard" type="submit" class="login-btn"
           [disabled]="userForm.invalid">LOGIN</button>
 
 </form>

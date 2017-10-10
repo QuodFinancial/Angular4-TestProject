@@ -4,7 +4,7 @@ import { LoginEntity, ILogin } from "../../../../../core/src";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./../auth.component.css']
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 

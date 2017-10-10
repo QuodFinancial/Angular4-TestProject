@@ -12,7 +12,7 @@ import { CarsInteractor } from '../../../../../lib/src/cars/cars.iteractor';
 @Component({
 	selector: 'app-cars',
 	templateUrl: './cars.component.html',
-	styleUrls: ['./../dashboard.component.css']
+	styleUrls: ['./cars.component.css']
 })
 export class CarsComponent implements OnInit {
 	private _interactor: CarsInteractor;

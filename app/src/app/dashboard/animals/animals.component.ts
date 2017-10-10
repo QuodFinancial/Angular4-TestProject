@@ -12,7 +12,7 @@ import { AnimalsInteractor } from '../../../../../lib/src/animals/animals.iterac
 @Component({
   selector: 'app-animals',
   templateUrl: './animals.component.html',
-  styleUrls: ['./../dashboard.component.css']
+  styleUrls: ['./animals.component.css']
 })
 export class AnimalsComponent implements OnInit {
   private _interactor: AnimalsInteractor;
