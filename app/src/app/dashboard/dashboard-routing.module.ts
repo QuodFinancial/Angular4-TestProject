@@ -13,6 +13,11 @@ import { CarsComponent } from './cars/cars.component';
         path: '',
         component: DashboardComponent,
         children: [
+	        {
+		        path: '',
+		        redirectTo: 'animals',
+		        pathMatch: 'full'
+	        },
           {
             path: 'users',
             component: UsersComponent
