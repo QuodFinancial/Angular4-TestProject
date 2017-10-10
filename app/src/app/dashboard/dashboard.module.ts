@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { DashboardRoutingModule, dashboardRoutingDeclarations } from './dashboard-routing.module';
 import { MatTableModule, MatButtonModule } from '@angular/material';
@@ -11,9 +12,10 @@ import { MatTableModule, MatButtonModule } from '@angular/material';
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    FormsModule,
 
-	  MatTableModule,
-	  MatButtonModule
+    MatTableModule,
+    MatButtonModule
   ]
 })
 export class DashboardModule {

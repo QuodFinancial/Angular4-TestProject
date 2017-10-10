@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
+import { LoginEntity, ILogin } from "../../../../../core/src";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./../auth.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent {
 
-  user = {userId: '', password: ''};
+  user = new LoginEntity({userID: '', password: ''});
 
-  constructor( ) { }
-
+  constructor() {
+  }
 }

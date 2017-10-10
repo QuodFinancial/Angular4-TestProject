@@ -1,3 +1,4 @@
+/*
 import { Todo } from '../../core'
 
 import { ITodoController, ITodoGateway } from '.'
@@ -104,3 +105,4 @@ export class TodoInteractor {
     })
   }
 }
+*/

@@ -1,42 +1,46 @@
-<button md-button color="warn" class="fl-right add-row-btn" (click)="addRow()">New</button>
+<button md-button color="warn" class="fl-right add-row-btn" (click)="addRowAction()">New</button>
 <div class="clearfix"></div>
+
 <div class="example-container mat-elevation-z8">
 
   <md-table #table [dataSource]="dataSource">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
     <ng-container mdColumnDef="remove">
-      <md-header-cell *mdHeaderCellDef> </md-header-cell>
-      <md-cell class="icon-cell" *mdCellDef="let element"> <i class="material-icons pointer">delete</i> </md-cell>
+      <md-header-cell *mdHeaderCellDef></md-header-cell>
+      <md-cell class="icon-cell" *mdCellDef="let i = index" (click)="removeRowAction(i)"><i class="material-icons pointer">delete</i></md-cell>
     </ng-container>
 
     <ng-container mdColumnDef="edit">
-      <md-header-cell *mdHeaderCellDef> </md-header-cell>
-      <md-cell class="icon-cell" *mdCellDef="let element"> <i class="material-icons pointer">edit</i> </md-cell>
-    </ng-container>
-
-    <!-- Position Column -->
-    <ng-container mdColumnDef="position">
-      <md-header-cell *mdHeaderCellDef> No. </md-header-cell>
-      <md-cell *mdCellDef="let element"> {{element.position}} </md-cell>
+      <md-header-cell *mdHeaderCellDef></md-header-cell>
+      <md-cell class="icon-cell" *mdCellDef="let i = index;">
+        <i *ngIf="i !== editedRow" (click)="editRowAction(i)" class="material-icons pointer">edit</i>
+        <i *ngIf="i === editedRow" (click)="saveRowAction(i)" class="material-icons pointer">save</i>
+        <i *ngIf="i === editedRow" (click)="cancelRowAction(i)" class="material-icons pointer">cancel</i>
+      </md-cell>
     </ng-container>
 
     <ng-container mdColumnDef="name">
-      <md-header-cell *mdHeaderCellDef> Name </md-header-cell>
-      <md-cell *mdCellDef="let element"> {{element.name}} </md-cell>
+      <md-header-cell *mdHeaderCellDef> Name</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseBlock" [(ngModel)]="element.name">
+        <ng-template #elseBlock>{{element.name}}</ng-template>
+      </md-cell>
     </ng-container>
-
 
     <ng-container mdColumnDef="age">
-      <md-header-cell *mdHeaderCellDef> Age </md-header-cell>
-      <md-cell *mdCellDef="let element"> {{element.age}} </md-cell>
+      <md-header-cell *mdHeaderCellDef> Age</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseAge" [(ngModel)]="element.age">
+        <ng-template #elseAge>{{element.age}}</ng-template>
+      </md-cell>
     </ng-container>
 
-
     <ng-container mdColumnDef="image">
-      <md-header-cell *mdHeaderCellDef>Image </md-header-cell>
-      <md-cell *mdCellDef="let element"> {{element.image}} </md-cell>
+      <md-header-cell *mdHeaderCellDef>Image</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseImage" [(ngModel)]="element.image">
+        <img class="row-img" *ngIf="element.image" #elseImage src="{{element.image}}" alt="">
+      </md-cell>
     </ng-container>
 
     <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
