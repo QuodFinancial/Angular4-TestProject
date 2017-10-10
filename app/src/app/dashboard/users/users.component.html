@@ -1,3 +1,59 @@
-<p>
-  users works!
-</p>
+<button md-button color="warn" class="fl-right add-row-btn" (click)="addRowAction()">New</button>
+<div class="clearfix"></div>
+
+<div class="example-container mat-elevation-z8">
+
+  <md-table #table [dataSource]="dataSource">
+
+    <ng-container mdColumnDef="remove">
+      <md-header-cell *mdHeaderCellDef></md-header-cell>
+      <md-cell class="icon-cell" *mdCellDef="let i = index" (click)="removeRowAction(i)"><i class="material-icons pointer">delete</i></md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="edit">
+      <md-header-cell *mdHeaderCellDef></md-header-cell>
+      <md-cell class="icon-cell" *mdCellDef="let i = index;">
+        <i *ngIf="i !== editedRow" (click)="editRowAction(i)" class="material-icons pointer">edit</i>
+        <i *ngIf="i === editedRow" (click)="saveRowAction(i)" class="material-icons pointer">save</i>
+        <i *ngIf="i === editedRow" (click)="cancelRowAction(i)" class="material-icons pointer">cancel</i>
+      </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="firstName">
+      <md-header-cell *mdHeaderCellDef>First Name</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseBlock" [(ngModel)]="element.firstName">
+        <ng-template #elseBlock>{{element.firstName}}</ng-template>
+      </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="lastName">
+      <md-header-cell *mdHeaderCellDef>Last Name</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseName" [(ngModel)]="element.lastName">
+        <ng-template #elseName>{{element.lastName}}</ng-template>
+      </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="address">
+      <md-header-cell *mdHeaderCellDef>Address</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseAddress" [(ngModel)]="element.address">
+        <ng-template #elseAddress>{{element.address}}</ng-template>
+      </md-cell>
+    </ng-container>
+
+    <ng-container mdColumnDef="birthDay">
+      <md-header-cell *mdHeaderCellDef>BirthDay</md-header-cell>
+      <md-cell *mdCellDef="let element; let i = index;">
+        <input type="text" *ngIf="i === editedRow; else elseDay" [(ngModel)]="element.birthDay">
+        <ng-template #elseDay>{{element.birthDay}}</ng-template>
+      </md-cell>
+    </ng-container>
+
+
+    <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+</div>
+
